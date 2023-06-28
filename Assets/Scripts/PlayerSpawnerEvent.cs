@@ -12,6 +12,7 @@ public class PlayerSpawnerEvent : MonoBehaviour
     public Camera mainCam;
     public GameObject teamA;
     public GameObject teamB;
+    
 
     public void Update()
     {
