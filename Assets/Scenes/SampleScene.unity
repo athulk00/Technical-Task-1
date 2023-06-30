@@ -133,6 +133,8 @@ GameObject:
   m_Component:
   - component: {fileID: 164813376}
   - component: {fileID: 164813377}
+  - component: {fileID: 164813379}
+  - component: {fileID: 164813378}
   m_Layer: 0
   m_Name: A*
   m_TagString: Untagged
@@ -169,7 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAMArIezcSqdKTwIAABAFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGFVEuP2jAQ/ivI57YKAba7vbWBZXtgQUurveRi4gmxcOzID57iv3fsJCRLK/UU55tvZr552BfCpakgs0rPNWcLxYB8GxB/Jp8GnfEFjnSr5JqfoeW8c2YLT6KB80YtV4gPvZtRJVjNs+9yKzw5QtBJnitdztgWEmWsQTinwgCatLLeWyJ0GZBj43Bqvmf/HVzxlIG0oP/HcjITtKyAebUdeRi1dDwFosRKGo5XnSkhuGlkEHuqQpkJrYzDIpDAOMWyggDPL4BvC4s/cd95mecGbCNK09OUa+xOHZX8UHXLSmp2tbI9Fc7niScPQVMddPEP+yTYc63KlzZxXZIteLZ7o6eMGttrah+eflTu5IGKHd0IeC9Avqq5Vk4yNFrtvKszEE97oW7FJQVku45Xi70DXfX3gIbdgK6h/GMieLnxyJdxDayFCg1/8j6gcTQ/UXBYC9NEQtSL+G3gF93296cxPHNtLJqahNKr2yinPZXMQs98Mc4mSksIcKO5AkmFPa0wjL2f4Z2tl/bO8kz9TWmSN7b2Aty5BLjjR9GdaaUOt2GZQh0WYIqls4JL6ER7wyv2KVFS1ivW70nrtnY6p1nPbes4+7hbJIrih/Ho63gE8eNoFD99ZpMog81jPHoajfG8IWH3uMQ6qVjVQpv24NRkF1zinrUPyGCuaRXWnWl6mPNzqXot5zJX60wDyGUd4SYcNCbBa8lmjGOD1mAtl2He5JISobIdsPQWKA2Vzo5W07SLkpKK75X1SEqS8GykxMO3VV5p2HM4+ORtsCu5/gFQSwMEFAAACAgAwCsh7LMl+q9sAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTXUVBKL0osyCgGihiCOKWZKSB2tJKBgZGZibG5iXGqkYWxsZGlboqpQXJqkoWRsaWxCZCdpBQLVF9SWZDql5ibCtETkFiSkZaZl5KZl67nXpSZ4g4yWim2FgBQSwECLQAUAAAICADAKyHs3EqnSk8CAAAQBQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICADAKyHssyX6r2wAAAB4AAAACQAkAAAAAAAAAAAAAACcAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAFMDAAAAAA==
+    dataString: UEsDBBQAAAgIAMArIeyanxvJTAIAAAsFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGFVE2PmzAQ/SuRz21FINnu9taSbLaHbKLNVnvh4uAhWDE2sk0+lf/esYFAaaWeMG/ezLz5sK+ES1NCapVeaM6WigH5NiLuTD6NOuMLnOhOyQ2/QMv54MzmjkQ9541arhAfOzejCrCap9/lTjhygGAleaZ0MWc7iJWxBuGMCgNo0so6b4nQdUROjcO5+V7cd3TDUwrSgv4fq5KpoEUJzKntyOOgpePJEyVW0nCc6lQJwU0jg9hz6ct8o2dXJOMUS/LJp/ibA9/lFn/CvuMqywzYRpCm5xnX2Jk6Ivmh6nYV1OxrVQcqKpcjnD54PXXQ5T/sU2/PtCpe2sR1OTbn6R4lptQ40OoKBuisEz7xzTlSsadbAR85yFe10KqSrHOtDISz3mjutcU5pPuOV2sdgFX592zG3WxuvvpTLHixdciXSQ1shPK9fnI+oHEqP1Gw3wjTRELUifhl4J3u+qvTGJ65NhZNTULp1G1VpR2VzH3LXDGVjZWW4OFGcwmSCnteYxg7HOHA1ks7sDxTd0ma5I2t3f2Bi4c7fhAMTGt1hDaSydVxCSZfVVZwCZ1oZ3jFPsVKynrD+j1p3TaVzmjac9tVnP25WiQIwodJ9HUSQfgYReHTZzYNUtg+htFTNMHzlvjV4xLrpGJdC23ag1OTXXCJe9a+HaOFpqXfdqbpccEvheq1nMtMbVINIFd1hLtw0JgEbySbM44N2oC1XPp5k2tChEr3wJJ7oMRXOj9ZTZMuSkJKflDWIQmJ/YuREAffV3mt4cDh6JK3wW7k9htQSwMEFAAACAgAwCsh7LMl+q9sAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTXUVBKL0osyCgGihiCOKWZKSB2tJKBgZGZibG5iXGqkYWxsZGlboqpQXJqkoWRsaWxCZCdpBQLVF9SWZDql5ibCtETkFiSkZaZl5KZl67nXpSZ4g4yWim2FgBQSwECLQAUAAAICADAKyHsmp8byUwCAAALBQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICADAKyHssyX6r2wAAAB4AAAACQAkAAAAAAAAAAAAAACZAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAFADAAAAAA==
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -197,11 +199,43 @@ MonoBehaviour:
     _MeshEdgeColor: {r: 0, g: 0, b: 0, a: 0.5}
     _AreaColors:
     - {r: 0, g: 0, b: 0, a: 0}
-  tagNames: []
+  tagNames:
+  - Basic Ground
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
   heuristic: 2
   heuristicScale: 1
   threadCount: 1
-  maxFrameTime: 1
+  maxFrameTime: 10
   batchGraphUpdates: 0
   graphUpdateBatchingInterval: 0.2
   euclideanEmbedding:
@@ -210,6 +244,57 @@ MonoBehaviour:
     pivotPointRoot: {fileID: 0}
     spreadOutCount: 1
   showGraphs: 1
+--- !u!114 &164813378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164813375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b090bec917bbe4c3bbc612ef13f7c4a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  useRaycasting: 1
+  mask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  thickRaycast: 0
+  thickRaycastRadius: 0
+  use2DPhysics: 0
+  raycastOffset: {x: 0, y: 0, z: 0}
+  useGraphRaycasting: 0
+  quality: 2
+--- !u!114 &164813379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164813375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 1
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,13 +465,107 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 22.4, z: -69.2}
+  m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
+  m_LocalPosition: {x: 0, y: 14.8, z: -64.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
+--- !u!1 &978839891
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 978839894}
+  - component: {fileID: 978839893}
+  - component: {fileID: 978839892}
+  m_Layer: 0
+  m_Name: AI Red
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &978839892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978839891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4f18880395d0c249b2fa1fd26697a71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blueMembers: []
+  redMembers: []
+  dataScriptable: {fileID: 11400000, guid: 05e49bc3bfd834b4d906a504a407367d, type: 2}
+  aiRedParent: {fileID: 0}
+--- !u!114 &978839893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978839891}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be9086ca66456e649a28bb668c00fe55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teamBlueSpawnEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 978839892}
+        m_TargetAssemblyTypeName: PlayerSpawnerScript, Assembly-CSharp
+        m_MethodName: SpawnTeamA
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  teamRedSpawnEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 978839892}
+        m_TargetAssemblyTypeName: PlayerSpawnerScript, Assembly-CSharp
+        m_MethodName: SpawnTeamB
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  leftMouseClickPosition: {x: 0, y: 0, z: 0}
+  rightMouseClickPosition: {x: 0, y: 0, z: 0}
+  mainCam: {fileID: 963194227}
+--- !u!4 &978839894
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978839891}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.86, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1281279709
 GameObject:
@@ -595,7 +774,7 @@ GameObject:
   - component: {fileID: 1535698307}
   - component: {fileID: 1535698306}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: AI Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -613,6 +792,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4f18880395d0c249b2fa1fd26697a71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blueMembers: []
+  redMembers: []
+  dataScriptable: {fileID: 11400000, guid: 05e49bc3bfd834b4d906a504a407367d, type: 2}
+  aiRedParent: {fileID: 978839894}
 --- !u!114 &1535698307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -658,8 +841,6 @@ MonoBehaviour:
   leftMouseClickPosition: {x: 0, y: 0, z: 0}
   rightMouseClickPosition: {x: 0, y: 0, z: 0}
   mainCam: {fileID: 963194227}
-  teamA: {fileID: 8533666503910308492, guid: 2b011d35a398f77408acd0d072964418, type: 3}
-  teamB: {fileID: 5386471859595705716, guid: 7f4e0bb2f8900084b88fe4946aa2e252, type: 3}
 --- !u!4 &1535698308
 Transform:
   m_ObjectHideFlags: 0

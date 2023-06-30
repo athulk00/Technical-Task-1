@@ -10,8 +10,7 @@ public class PlayerSpawnerEvent : MonoBehaviour
     public Vector3 leftMouseClickPosition;
     public Vector3 rightMouseClickPosition;
     public Camera mainCam;
-    public GameObject teamA;
-    public GameObject teamB;
+   
     
 
     public void Update()

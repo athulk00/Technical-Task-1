@@ -20,11 +20,11 @@ public class BlueTeamIdleState : BlueTeamBaseState
        
 
     }
-    public override void OnCollisionEnter(BlueTeamStateManager blueTeam, Collision collision)
+    public override void OnCollisionEnter(BlueTeamStateManager blueTeam, Collider other)
     {
-        if(collision.gameObject.CompareTag("dsfsf") )
+       /*if(collision.gameObject.CompareTag("dsfsf") )
         {
             blueTeam.SwitchState(blueTeam.hittingState);
-        }
+        }*/
     }
 }

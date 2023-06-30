@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6161b1687664634db6a26753ed4bc62, type: 3}
+  m_Name: PlayerData
+  m_EditorClassIdentifier: 
+  blueTeamPrefab: {fileID: 8533666503910308492, guid: 2b011d35a398f77408acd0d072964418, type: 3}
+  redTeamPrefab: {fileID: 5386471859595705716, guid: 7f4e0bb2f8900084b88fe4946aa2e252, type: 3}
+  blueTeamHealth: 100
+  redTeamHealth: 100
+  blueTeamDamage: 10
+  redTeamDamage: 10

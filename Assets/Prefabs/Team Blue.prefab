@@ -869,6 +869,7 @@ GameObject:
   - component: {fileID: 8835221783233389171}
   - component: {fileID: 5361458700444476559}
   - component: {fileID: 7155158740789474342}
+  - component: {fileID: 2318028632830905305}
   m_Layer: 0
   m_Name: w_sword
   m_TagString: Untagged
@@ -941,6 +942,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2318028632830905305
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5943107594451938000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.410133, y: 0.08983608, z: 0.13818194}
+  m_Center: {x: -0.76116854, y: -0.002727315, z: -0.007868694}
 --- !u!1 &6089863699817048927
 GameObject:
   m_ObjectHideFlags: 0
@@ -1293,8 +1307,8 @@ GameObject:
   - component: {fileID: 1517439162837543490}
   - component: {fileID: 856868871641126908}
   - component: {fileID: 8627013695758640109}
-  - component: {fileID: -5429334155501436590}
   - component: {fileID: 4259045977562306054}
+  - component: {fileID: 2609893167825495234}
   m_Layer: 0
   m_Name: Team Blue
   m_TagString: TeamBlue
@@ -1381,7 +1395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 5
-  radius: 0.5
+  radius: 0.31
   height: 2
   canMove: 1
   maxSpeed: 3
@@ -1403,9 +1417,9 @@ MonoBehaviour:
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 360
-  slowdownDistance: 3
+  slowdownDistance: 0.6
   pickNextWaypointDist: 2
-  endReachedDistance: 1.5
+  endReachedDistance: 2
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
@@ -1434,11 +1448,35 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.35
   m_Height: 1.89
   m_Direction: 1
   m_Center: {x: 0, y: 0.84, z: 0}
---- !u!54 &-5429334155501436590
+--- !u!114 &4259045977562306054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8533666503910308492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99689202d7594ce4fa151024a9b07ac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animB: {fileID: 5484917540726831381}
+  animR: {fileID: 8120953951689064173, guid: 7f4e0bb2f8900084b88fe4946aa2e252, type: 3}
+  blueTeamHealth: 0
+  redTeamHealth: 0
+  blueTeamDamage: 0
+  redTeamDamage: 0
+  isTriggerBlue: 0
+  isTriggerRed: 0
+  sampleSize: 10
+  movingAverageSpeed: 0
+  movementScript: {fileID: 1517439162837543490}
+  dataScriptable: {fileID: 11400000, guid: 05e49bc3bfd834b4d906a504a407367d, type: 2}
+--- !u!54 &2609893167825495234
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1454,22 +1492,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
---- !u!114 &4259045977562306054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8533666503910308492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99689202d7594ce4fa151024a9b07ac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 5484917540726831381}
-  sampleSize: 10
-  movingAverageSpeed: 0
-  movementScript: {fileID: 1517439162837543490}
 --- !u!1 &8664523959158004368
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class PlayerSpawnerScript : MonoBehaviour
 {
-    public static List<GameObject> blueMembers;
-    public static List<GameObject> redMembers;
+    public  List<GameObject> blueMembers;
+    public  List<GameObject> redMembers;
+    public AllPlayerDataScriptable dataScriptable;
+    public Transform aiRedParent;
 
-
-
-    private int count = 0;
+    
     void Start()
     {
         blueMembers = new List<GameObject>();
@@ -25,7 +25,7 @@ public class PlayerSpawnerScript : MonoBehaviour
     public void SpawnTeamA()
     {
         PlayerSpawnerEvent Onevent = GetComponent<PlayerSpawnerEvent>();
-        GameObject instanceBlue = Instantiate(Onevent.teamA, Onevent.leftMouseClickPosition, Quaternion.identity);
+        GameObject instanceBlue = Instantiate(dataScriptable.blueTeamPrefab, Onevent.leftMouseClickPosition, Quaternion.identity);
         instanceBlue.transform.SetParent(this.transform);
         blueMembers.Add(instanceBlue);
 
@@ -34,31 +34,51 @@ public class PlayerSpawnerScript : MonoBehaviour
     public void SpawnTeamB()
     {
         PlayerSpawnerEvent Onevent = GetComponent<PlayerSpawnerEvent>();
-        GameObject instanceRed = Instantiate(Onevent.teamB, Onevent.rightMouseClickPosition, Quaternion.identity);
+        GameObject instanceRed = Instantiate(dataScriptable.redTeamPrefab, Onevent.rightMouseClickPosition, Quaternion.identity);
+        instanceRed.transform.SetParent(aiRedParent.transform);
         redMembers.Add(instanceRed);
 
     }
     public void SetTarget()
     {
-        for(int i = 0; i< blueMembers.Count; i++)
+         if (blueMembers.Count == 0 || redMembers.Count == 0) return;
+      if(blueMembers.Count == redMembers.Count)
         {
-            if (blueMembers.Count == redMembers.Count)
+            for(int i = 0; i < blueMembers.Count; i++)
             {
-                Debug.Log("entering");
                 blueMembers[i].GetComponent<AIDestinationSetter>().target = redMembers[i].transform;
+                redMembers[i].GetComponent<AIDestinationSetter>().target = blueMembers[i].transform;
             }
-            else if(blueMembers.Count > redMembers.Count)
+        }
+      else if (blueMembers.Count > redMembers.Count)
+        {
+            int missingIndex = blueMembers.Count - redMembers.Count;
+            for(int i = 0; i< blueMembers.Count - missingIndex; i++)
             {
-                int missingTarget = blueMembers.Count - redMembers.Count;
-                
-                for(int j =blueMembers.Count-missingTarget; j< blueMembers.Count;j++)
-                {
-                    int redmemberIndex = UnityEngine.Random.Range(0, redMembers.Count);
-                    blueMembers[j].GetComponent<AIDestinationSetter>().target = redMembers[redmemberIndex].transform;
-                }
+                blueMembers[i].GetComponent<AIDestinationSetter>().target = redMembers[i].transform;
+                redMembers[i].GetComponent<AIDestinationSetter>().target = blueMembers[i].transform;
             }
-            
-            
+            for(int j = blueMembers.Count - missingIndex; j< blueMembers.Count; j++)
+            {
+                int intex = UnityEngine.Random.Range(0, redMembers.Count);
+                blueMembers[j].GetComponent<AIDestinationSetter>().target = redMembers[0].transform;
+            }
+        }
+      else if(redMembers.Count > blueMembers.Count)
+        {
+            int missingIndex = redMembers.Count - blueMembers.Count;
+            for(int i = 0; i< redMembers.Count- missingIndex; i++)
+            {
+                blueMembers[i].GetComponent<AIDestinationSetter>().target = redMembers[i].transform;
+                redMembers[i].GetComponent<AIDestinationSetter>().target = blueMembers[i].transform;
+            }
+            for(int j = redMembers.Count - missingIndex; j< redMembers.Count; j++)
+            {
+                int intex = UnityEngine.Random.Range(0, blueMembers.Count);
+                redMembers[j].GetComponent<AIDestinationSetter>().target = blueMembers[0].transform;
+            }
         }
     }
+
+   
 }
