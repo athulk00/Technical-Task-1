@@ -30,12 +30,7 @@ public class BlueTeamStateManager : MonoBehaviour
     public RedTeamAttackingState attackingStateR= new RedTeamAttackingState();
    // public RedTeamDiedState diedStateR = new RedTeamDiedState();
 
-    public static List<GameObject> blueMembers;
-    public static List<GameObject> redMembers;
 
-
-    public int sampleSize = 10;
-    public float movingAverageSpeed;
     public AIPath movementScript;
     public AllPlayerDataScriptable dataScriptable;
     
@@ -44,8 +39,6 @@ public class BlueTeamStateManager : MonoBehaviour
 
     void Start()
     {
-        blueMembers = new List<GameObject>();
-        redMembers = new List<GameObject>();
         rb = GetComponent<Rigidbody>();
         SwitchState(idleState);
         SwitchStateR(idleStateR);
@@ -113,6 +106,7 @@ public class BlueTeamStateManager : MonoBehaviour
         if(redTeamHealth <= 0)
         {
             animR.SetTrigger("deathR");
+            animB.SetBool("attacking", false);
             isDiedR = true;
         }
     }
@@ -122,6 +116,7 @@ public class BlueTeamStateManager : MonoBehaviour
         if (blueTeamHealth <= 0)
         {
             animB.SetTrigger("death");
+            animR.SetBool("attackingR", false);
             isDiedB = true;
         }
     }

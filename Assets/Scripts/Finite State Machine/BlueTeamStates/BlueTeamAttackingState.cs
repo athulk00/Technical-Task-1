@@ -9,11 +9,11 @@ public class BlueTeamAttackingState : BlueTeamBaseState
     {
         blueTeam.animB.SetBool("attack", true);
         
-        Debug.Log("Attacking");
     }
     public override void UpdateState(BlueTeamStateManager blueTeam)
     {
         if (blueTeam.movementScript.velocity.magnitude > 0 ) {
+
             blueTeam.animB.SetBool("attack", false);
             blueTeam.SwitchState(blueTeam.walkingState);
         }
