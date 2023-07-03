@@ -46,10 +46,7 @@ public class BlueTeamStateManager : MonoBehaviour
         
         currentState.UpdateState(this, redManager);
         animB.SetFloat("moveSpeed", movementScript.velocity.magnitude);
-        if (blueTeamHealth <= 0)
-        {
-            isDiedB = true;
-        }
+       
     }
 
     public void SwitchState(BlueTeamBaseState state)
@@ -58,11 +55,14 @@ public class BlueTeamStateManager : MonoBehaviour
         currentState.EnterState(this);
     }
 
-    public float TakeDamage()
+    public void TakeDamage()
     {
         blueTeamHealth -= redTeamDamage;
         healthbar.SetHealth(blueTeamHealth);
-        return blueTeamHealth;
+        if (blueTeamHealth <= 0)
+        {
+            isDiedB = true;
+        }
     }
   
   

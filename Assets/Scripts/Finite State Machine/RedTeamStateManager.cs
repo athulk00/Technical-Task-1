@@ -29,6 +29,7 @@ public class RedTeamStateManager : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         SwitchStateR(idleStateR);
         redTeamHealth = dataScriptable.redTeamHealth;
+        blueTeamDamage = dataScriptable.blueTeamDamage;
         healthbar.SetMaxHealth(dataScriptable.redTeamHealth);
         
     }
@@ -40,10 +41,7 @@ public class RedTeamStateManager : MonoBehaviour
         currentStateR.UpdateState(this, blueManager);
         animR.SetFloat("moveSpeed", movementScript.velocity.magnitude);
         
-        if (redTeamHealth <= 0)
-        {
-            isDiedR = true;
-        }
+        
     }
 
     public void SwitchStateR(RedTeamBaseState state)
@@ -52,12 +50,15 @@ public class RedTeamStateManager : MonoBehaviour
         currentStateR.EnterState(this);
     }
  
-    public float TakeDamage()
+    public void TakeDamage()
     {
 
         redTeamHealth -= blueTeamDamage;
         healthbar.SetHealth(redTeamHealth);
-        return redTeamHealth;
+        if (redTeamHealth <= 0)
+        {
+            isDiedR = true;
+        }
     }
 
 

@@ -21,7 +21,7 @@ public class RedTeamAttackingState : RedTeamBaseState
         {
             redTeam.animR.SetBool("attackR", false);
             redTeam.SwitchStateR(redTeam.diedStateR);
-            blueteam.SwitchState(blueteam.idleState);
+            
         }
         if (redTeam.destination.target == null) {
             redTeam.animR.SetBool("attackR", false);
