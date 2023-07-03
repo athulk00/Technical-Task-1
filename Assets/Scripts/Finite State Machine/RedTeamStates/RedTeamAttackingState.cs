@@ -4,24 +4,33 @@ using UnityEngine;
 
 public class RedTeamAttackingState : RedTeamBaseState
 {
-    public override void EnterState(BlueTeamStateManager blueTeam)
+    
+    public override void EnterState(RedTeamStateManager redTeam)
     {
-        blueTeam.animR.SetBool("attackR", true);
+        redTeam.animR.SetBool("attackR", true);
+    }
+    public override void UpdateState(RedTeamStateManager redTeam, BlueTeamStateManager blueteam)
+    {
+        
+        if (redTeam.movementScript.velocity.magnitude > 0)
+        {
+            redTeam.animR.SetBool("attackR", false);
+            redTeam.SwitchStateR(redTeam.walkingStateR);
+        }
+        if (redTeam.isDiedR == true)
+        {
+            redTeam.animR.SetBool("attackR", false);
+            redTeam.SwitchStateR(redTeam.diedStateR);
+            blueteam.SwitchState(blueteam.idleState);
+        }
+        if (redTeam.destination.target == null) {
+            redTeam.animR.SetBool("attackR", false);
+            redTeam.SwitchStateR(redTeam.idleStateR);
+        } 
 
     }
-    public override void UpdateState(BlueTeamStateManager blueTeam)
+    public override void OnCollisionEnter(RedTeamStateManager redTeam, Collider other)
     {
-        if (blueTeam.movementScript.velocity.magnitude > 0)
-        {
-            blueTeam.animR.SetBool("attackR", false);
-            blueTeam.SwitchStateR(blueTeam.walkingStateR);
-        }
-    }
-    public override void OnCollisionEnter(BlueTeamStateManager blueTeam, Collider other)
-    {
-       /* if (other.CompareTag("TeamRed") && blueTeam.isTriggerBlue == true)
-        {
-            blueTeam.SwitchStateR(blueTeam.hittingStateR);
-        }*/
+      
     }
 }

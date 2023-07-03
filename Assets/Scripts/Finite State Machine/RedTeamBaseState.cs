@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class RedTeamBaseState 
 {
-    public abstract void EnterState(BlueTeamStateManager blueTeam);
-    public abstract void UpdateState(BlueTeamStateManager blueTeam);
-    public abstract void OnCollisionEnter(BlueTeamStateManager blueTeam, Collider other);
+    public abstract void EnterState(RedTeamStateManager redTeam);
+    public abstract void UpdateState(RedTeamStateManager redTeam, BlueTeamStateManager blueTeam);
+    public abstract void OnCollisionEnter(RedTeamStateManager redTeam, Collider other);
 }

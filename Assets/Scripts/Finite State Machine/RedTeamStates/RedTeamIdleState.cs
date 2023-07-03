@@ -5,18 +5,18 @@ using UnityEngine;
 public class RedTeamIdleState : RedTeamBaseState
 {
 
-    public override void EnterState(BlueTeamStateManager blueTeam)
+    public override void EnterState(RedTeamStateManager redTeam)
     {
 
     }
-    public override void UpdateState(BlueTeamStateManager blueTeam)
+    public override void UpdateState(RedTeamStateManager redTeam, BlueTeamStateManager blueTeam)
     {
-        if (blueTeam.movementScript.velocity.magnitude > 0)
+        if (redTeam.movementScript.velocity.magnitude > 0)
         {
-            blueTeam.SwitchStateR(blueTeam.walkingStateR);
+            redTeam.SwitchStateR(redTeam.walkingStateR);
         }
     }
-    public override void OnCollisionEnter(BlueTeamStateManager blueTeam, Collider other)
+    public override void OnCollisionEnter(RedTeamStateManager redTeam, Collider other)
     {
 
     }

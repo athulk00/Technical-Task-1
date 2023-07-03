@@ -5,17 +5,17 @@ using UnityEngine;
 public class RedTeamWalkingState : RedTeamBaseState
 {
 
-    public override void EnterState(BlueTeamStateManager blueTeam)
+    public override void EnterState(RedTeamStateManager redTeam)
     {
 
     }
-    public override void UpdateState(BlueTeamStateManager blueTeam)
+    public override void UpdateState(RedTeamStateManager redTeam, BlueTeamStateManager blueTeam)
     {
-        if (blueTeam.movementScript.velocity.magnitude <= 0) blueTeam.SwitchStateR(blueTeam.idleStateR);
-        if (blueTeam.movementScript.velocity.magnitude <= 0 && blueTeam.movementScript.reachedEndOfPath)
-            blueTeam.SwitchStateR(blueTeam.attackingStateR);
+        if (redTeam.movementScript.velocity.magnitude <= 0) redTeam.SwitchStateR(redTeam.idleStateR);
+        if (redTeam.movementScript.velocity.magnitude <= 0 && redTeam.movementScript.reachedEndOfPath)
+            redTeam.SwitchStateR(redTeam.attackingStateR);
     }
-    public override void OnCollisionEnter(BlueTeamStateManager blueTeam, Collider other)
+    public override void OnCollisionEnter(RedTeamStateManager redTeam, Collider other)
     {
 
     }

@@ -9,7 +9,8 @@ public class PlayerSpawnerScript : MonoBehaviour
     public  List<GameObject> redMembers;
     public AllPlayerDataScriptable dataScriptable;
     public Transform aiRedParent;
-
+    private GameObject diedPlayerB;
+    private GameObject diedPlayerR;
     
     void Start()
     {
@@ -21,6 +22,7 @@ public class PlayerSpawnerScript : MonoBehaviour
     void Update()
     {
         SetTarget();
+        CheckDeadState();   
     }
     public void SpawnTeamA()
     {
@@ -38,6 +40,29 @@ public class PlayerSpawnerScript : MonoBehaviour
         instanceRed.transform.SetParent(aiRedParent.transform);
         redMembers.Add(instanceRed);
 
+    }
+    public void CheckDeadState()
+    {
+        for (int i = blueMembers.Count-1; i >= 0; i--)
+        {
+            if (blueMembers[i].GetComponent<BlueTeamStateManager>().isDiedB == true)
+            {
+                diedPlayerB = blueMembers[i];
+                StartCoroutine(DelayB());
+                blueMembers.RemoveAt(i);
+                
+            }
+
+        }
+        for (int i = redMembers.Count-1; i >= 0; i--)
+        {
+            if (redMembers[i].GetComponent<RedTeamStateManager>().isDiedR == true)
+            {
+                diedPlayerR = redMembers[i];
+                StartCoroutine(DelayR());
+                redMembers.RemoveAt(i);
+            }
+        }
     }
     public void SetTarget()
     {
@@ -57,6 +82,7 @@ public class PlayerSpawnerScript : MonoBehaviour
             {
                 blueMembers[i].GetComponent<AIDestinationSetter>().target = redMembers[i].transform;
                 redMembers[i].GetComponent<AIDestinationSetter>().target = blueMembers[i].transform;
+
             }
             for(int j = blueMembers.Count - missingIndex; j< blueMembers.Count; j++)
             {
@@ -79,6 +105,23 @@ public class PlayerSpawnerScript : MonoBehaviour
             }
         }
     }
+    public void GetTargetForBlue(List<GameObject> listB)
+    {
 
-   
+    }
+    IEnumerator DelayB()
+    {
+        yield return new WaitForSeconds(2f);
+        Destroy(diedPlayerB);
+        
+    }
+    IEnumerator DelayR()
+    {
+        yield return new WaitForSeconds(2f);
+        Destroy(diedPlayerR);
+
+    }
+
+
+
 }

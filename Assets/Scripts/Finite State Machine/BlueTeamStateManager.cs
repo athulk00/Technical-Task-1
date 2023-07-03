@@ -8,56 +8,48 @@ public class BlueTeamStateManager : MonoBehaviour
 {
     private Rigidbody rb;
     public Animator animB;
-    public Animator animR;
     public float blueTeamHealth;
-    public float redTeamHealth;
-    public float blueTeamDamage;
     public float redTeamDamage;
+    public float blueTeamDamage;
     public bool isTriggerBlue;
-    public bool isTriggerRed;
     public bool isDiedB = false;
-    public bool isDiedR = false;
+    public bool diedR;
+    public HealthBar healthbar;
     public BlueTeamBaseState currentState;
-    public RedTeamBaseState currentStateR;
+    public RedTeamStateManager redTeam;
     public BlueTeamIdleState idleState = new BlueTeamIdleState();
     public BlueTeamWalkingState walkingState = new BlueTeamWalkingState();
-   // public BlueTeamHittingState hittingState = new BlueTeamHittingState();
     public BlueTeamAttackingState attackingState = new BlueTeamAttackingState();
-   // public BlueTeamDiedState diedState = new BlueTeamDiedState();
-    public RedTeamIdleState idleStateR = new RedTeamIdleState();
-    public RedTeamWalkingState walkingStateR = new RedTeamWalkingState();
-   // public RedTeamHittingState hittingStateR = new RedTeamHittingState();
-    public RedTeamAttackingState attackingStateR= new RedTeamAttackingState();
-   // public RedTeamDiedState diedStateR = new RedTeamDiedState();
+    public BlueTeamDiedState diedState = new BlueTeamDiedState();
+  
 
 
     public AIPath movementScript;
+    public AIDestinationSetter destination;
+    public RedTeamStateManager redManager ;
     public AllPlayerDataScriptable dataScriptable;
-    
-
-
+ 
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         SwitchState(idleState);
-        SwitchStateR(idleStateR);
         blueTeamHealth = dataScriptable.blueTeamHealth;
-        redTeamHealth = dataScriptable.redTeamHealth;
-        blueTeamDamage = dataScriptable.blueTeamDamage;
         redTeamDamage = dataScriptable.redTeamDamage;
+        healthbar.SetMaxHealth(dataScriptable.blueTeamHealth);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         
-        currentState.UpdateState(this);
-        currentStateR.UpdateState(this);
+        currentState.UpdateState(this, redManager);
         animB.SetFloat("moveSpeed", movementScript.velocity.magnitude);
-        animR.SetFloat("moveSpeed", movementScript.velocity.magnitude);
-        
-        
+        if (blueTeamHealth <= 0)
+        {
+            isDiedB = true;
+        }
     }
 
     public void SwitchState(BlueTeamBaseState state)
@@ -65,61 +57,15 @@ public class BlueTeamStateManager : MonoBehaviour
         currentState = state;
         currentState.EnterState(this);
     }
-    public void SwitchStateR(RedTeamBaseState state)
-    {
-        currentStateR = state;
-        currentStateR.EnterState(this);
-    }
-    public void OnTriggerEnter(Collider other)
-    {    //for blue team
-        if (other.CompareTag("TeamRed"))
-        {
-            isTriggerBlue = true;
-            if (isTriggerBlue == true) TakeDamageRed();
-        }
-        // for red team
-        if (other.CompareTag("TeamBlue"))
-        {
-            isTriggerRed = true;
-            if (isTriggerRed == true) TakeDamageBlue();
-        }
 
-
-    }
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("TeamBlue"))
-        {
-            isTriggerRed = false;
-
-        }
-        if (other.CompareTag("TeamRed"))
-        {
-            isTriggerBlue = false;
-
-        }
-    }
-
-    public void TakeDamageRed()
-    {
-        redTeamHealth -= blueTeamDamage;
-        if(redTeamHealth <= 0)
-        {
-            animR.SetTrigger("deathR");
-            animB.SetBool("attacking", false);
-            isDiedR = true;
-        }
-    }
-    public void TakeDamageBlue()
+    public float TakeDamage()
     {
         blueTeamHealth -= redTeamDamage;
-        if (blueTeamHealth <= 0)
-        {
-            animB.SetTrigger("death");
-            animR.SetBool("attackingR", false);
-            isDiedB = true;
-        }
+        healthbar.SetHealth(blueTeamHealth);
+        return blueTeamHealth;
     }
+  
+  
 
 
 

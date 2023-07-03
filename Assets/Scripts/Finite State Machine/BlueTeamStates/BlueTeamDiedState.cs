@@ -6,15 +6,9 @@ public class BlueTeamDiedState : BlueTeamBaseState
 {
     public override void EnterState(BlueTeamStateManager blueTeam)
     {
-        
-
-           // blueTeam.animB.SetTrigger("death");
-            
-        
-        
-
+        blueTeam.animB.SetTrigger("died");
     }
-    public override void UpdateState(BlueTeamStateManager blueTeam)
+    public override void UpdateState(BlueTeamStateManager blueTeam, RedTeamStateManager redTeam)
     {
         
     }

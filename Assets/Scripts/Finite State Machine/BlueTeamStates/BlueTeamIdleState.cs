@@ -10,21 +10,15 @@ public class BlueTeamIdleState : BlueTeamBaseState
 
         Debug.Log("idle");
     }
-    public override void UpdateState(BlueTeamStateManager blueTeam)
+    public override void UpdateState(BlueTeamStateManager blueTeam, RedTeamStateManager redTeam)
     {
         if (blueTeam.movementScript.velocity.magnitude > 0)
         {
             blueTeam.SwitchState(blueTeam.walkingState);
         }
-      
-       
-
     }
     public override void OnCollisionEnter(BlueTeamStateManager blueTeam, Collider other)
     {
-       /*if(collision.gameObject.CompareTag("dsfsf") )
-        {
-            blueTeam.SwitchState(blueTeam.hittingState);
-        }*/
+       
     }
 }

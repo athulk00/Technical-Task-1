@@ -5,19 +5,15 @@ using UnityEngine;
 public class RedTeamDiedState : RedTeamBaseState
 {
 
-    public override void EnterState(BlueTeamStateManager blueTeam)
+    public override void EnterState(RedTeamStateManager redTeam)
     {
-        
-        
-           // blueTeam.animR.SetTrigger("deathR");
-            
-        
+        redTeam.animR.SetTrigger("diedR");
     }
-    public override void UpdateState(BlueTeamStateManager blueTeam)
+    public override void UpdateState(RedTeamStateManager redTeam, BlueTeamStateManager blueTeam)
     {
         
     }
-    public override void OnCollisionEnter(BlueTeamStateManager blueTeam, Collider other)
+    public override void OnCollisionEnter(RedTeamStateManager redTeam, Collider other)
     {
 
     }
