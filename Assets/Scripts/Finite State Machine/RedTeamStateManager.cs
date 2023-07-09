@@ -23,6 +23,7 @@ public class RedTeamStateManager : MonoBehaviour
     public AIDestinationSetter destination;
     public BlueTeamStateManager blueManager;
     public AllPlayerDataScriptable dataScriptable;
+    
 
     void Start()
     {
@@ -52,12 +53,13 @@ public class RedTeamStateManager : MonoBehaviour
  
     public void TakeDamage()
     {
-
+        
         redTeamHealth -= blueTeamDamage;
         healthbar.SetHealth(redTeamHealth);
         if (redTeamHealth <= 0)
         {
             isDiedR = true;
+            
         }
     }
 
