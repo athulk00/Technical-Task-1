@@ -70,35 +70,7 @@ public class PlayerSpawnerScript : MonoBehaviour
         redMembers.Add(instanceRed);
         redPlayerId++;
     }
-    public void CheckDeadState()
-    {
-        for (int i = blueMembers.Count-1; i >= 0; i--)
-        {
-            if (blueMembers[i].GetComponent<BlueTeamStateManager>().isDiedB == true)
-            {
-                referenceTimeDiedBlue = Time.time;
-                idBlue = blueMembers.IndexOf(blueMembers[i]) + 1;
-                diedPlayerB = blueMembers[i];
-                playerBlueDiedEvent.Raise();
-                StartCoroutine(DelayB());
-                blueMembers.RemoveAt(i);
-                
-            }
-
-        }
-        for (int i = redMembers.Count-1; i >= 0; i--)
-        {
-            if (redMembers[i].GetComponent<RedTeamStateManager>().isDiedR == true)
-            {
-                referenceTimeDiedRed = Time.time;
-                idRed = redMembers.IndexOf(redMembers[i]) + 1;
-                diedPlayerR = redMembers[i];
-                playerRedDiedEvent.Raise();
-                StartCoroutine(DelayR());
-                redMembers.RemoveAt(i);
-            }
-        }
-    }
+ 
     public void SetTarget()
     {
          if (blueMembers.Count == 0 || redMembers.Count == 0) return;
@@ -140,7 +112,38 @@ public class PlayerSpawnerScript : MonoBehaviour
             }
         }
     }
-  
+
+    public void CheckDeadState()
+    {
+        for (int i = blueMembers.Count - 1; i >= 0; i--)
+        {
+            if (blueMembers[i].GetComponent<BlueTeamStateManager>().isDiedB == true)
+            {
+                blueMembers[i].GetComponent<BlueTeamStateManager>().destination.target = null;
+                referenceTimeDiedBlue = Time.time;
+                idBlue = blueMembers.IndexOf(blueMembers[i]) + 1;
+                diedPlayerB = blueMembers[i];
+                playerBlueDiedEvent.Raise();
+                StartCoroutine(DelayB());
+                blueMembers.RemoveAt(i);
+
+            }
+
+        }
+        for (int i = redMembers.Count - 1; i >= 0; i--)
+        {
+            if (redMembers[i].GetComponent<RedTeamStateManager>().isDiedR == true)
+            {
+                redMembers[i].GetComponent<RedTeamStateManager>().destination.target = null;
+                referenceTimeDiedRed = Time.time;
+                idRed = redMembers.IndexOf(redMembers[i]) + 1;
+                diedPlayerR = redMembers[i];
+                playerRedDiedEvent.Raise();
+                StartCoroutine(DelayR());
+                redMembers.RemoveAt(i);
+            }
+        }
+    }
     IEnumerator DelayB()
     {
         yield return new WaitForSeconds(2f);
@@ -158,6 +161,7 @@ public class PlayerSpawnerScript : MonoBehaviour
     {
         GameObject instance = Instantiate(dialougeBoxBlue);
         instance.transform.SetParent(parentPanal.transform);
+        instance.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         TextMeshProUGUI[] textFields = instance.GetComponentsInChildren<TextMeshProUGUI>();
         PlayerSpawnerEvent Onevent = GetComponent<PlayerSpawnerEvent>();
         referenceTimeBlue = Time.time;
@@ -180,6 +184,7 @@ public class PlayerSpawnerScript : MonoBehaviour
     {
         GameObject instance = Instantiate(dialougeBoxRed);
         instance.transform.SetParent(parentPanal.transform);
+        instance.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         TextMeshProUGUI[] textFields = instance.GetComponentsInChildren<TextMeshProUGUI>();
         PlayerSpawnerEvent Onevent1 = GetComponent<PlayerSpawnerEvent>();
         referenceTimeRed = Time.time;
@@ -203,6 +208,7 @@ public class PlayerSpawnerScript : MonoBehaviour
     {
         GameObject instance = Instantiate(dialougeBoxBlue);
         instance.transform.SetParent(parentPanal.transform);
+        instance.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         TextMeshProUGUI[] textFields = instance.GetComponentsInChildren<TextMeshProUGUI>();
         foreach (TextMeshProUGUI textField in textFields)
         {
@@ -224,6 +230,7 @@ public class PlayerSpawnerScript : MonoBehaviour
     {
         GameObject instance = Instantiate(dialougeBoxRed);
         instance.transform.SetParent(parentPanal.transform);
+        instance.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         TextMeshProUGUI[] textFields = instance.GetComponentsInChildren<TextMeshProUGUI>();
         foreach (TextMeshProUGUI textField in textFields)
         {
